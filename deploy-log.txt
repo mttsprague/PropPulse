@@ -1,0 +1,75 @@
+
+=== Deploying to 'proppulse-7e1bd'...
+
+i  deploying functions
+i  functions: preparing codebase default for deployment
+i  functions: ensuring required API cloudfunctions.googleapis.com is enabled...
+i  functions: ensuring required API cloudbuild.googleapis.com is enabled...
+i  artifactregistry: ensuring required API artifactregistry.googleapis.com is enabled...
+⚠  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory.
+⚠  functions: Please note that there will be breaking changes when you upgrade.
+i  functions: Loading and analyzing source code for codebase default to determine what to deploy
+i  functions: You are using a version of firebase-functions SDK (4.9.0) that does not have support for the newest Firebase Extensions features. Please update firebase-functions SDK to >=5.1.0 to use them correctly
+Serving at port 8717
+
+i  functions: preparing apps/functions directory for uploading...
+i  functions: packaged /Users/matthewsprague/Documents/GitHub/PropPulse/apps/functions (128.2 KB) for uploading
+i  functions: ensuring required API cloudscheduler.googleapis.com is enabled...
+✔  functions: apps/functions source uploaded successfully
+i  functions: creating Node.js 20 (1st Gen) function searchPlayers(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function topPlayers(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function computeAggregatesDaily(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function computePropTablesDaily(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function buildSearchIndexWeekly(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function rebuildSearchIndex(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function computeAggregatesManual(us-central1)...
+i  functions: creating Node.js 20 (1st Gen) function computePropTablesManual(us-central1)...
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/searchPlayers failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_10_293Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/computePropTablesDaily failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_47_139Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/buildSearchIndexWeekly failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_48_512Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/topPlayers failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_46_003Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/computeAggregatesManual failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_47_933Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/rebuildSearchIndex failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_50_996Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/computeAggregatesDaily failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_46_402Z-debug-0.log; Error ID: b0ba1f57.
+Gen1 operation for function projects/proppulse-7e1bd/locations/us-central1/functions/computePropTablesManual failed: Build failed: npm error code EUNSUPPORTEDPROTOCOL
+npm error Unsupported URL Type "workspace:": workspace:*
+npm error A complete log of this run can be found in: /www-data-home/.npm/_logs/2026-01-02T20_27_48_381Z-debug-0.log; Error ID: b0ba1f57.
+
+Functions deploy had errors with the following functions:
+	buildSearchIndexWeekly(us-central1)
+	computeAggregatesDaily(us-central1)
+	computeAggregatesManual(us-central1)
+	computePropTablesDaily(us-central1)
+	computePropTablesManual(us-central1)
+	rebuildSearchIndex(us-central1)
+	searchPlayers(us-central1)
+	topPlayers(us-central1)
+⚠  functions: No cleanup policy detected for repositories in us-central1. This may result in a small monthly bill as container images accumulate over time.
+[34m?[39m [1mHow many days do you want to keep container images before they're deleted?[22m [2m(1)[22m
+[1A[82G[1B[2K[1A[2K[G[34m?[39m [1mHow many days do you want to keep container images before they're deleted?[22m [2m(1)[22m
+[1A[82G[1B[2K[1A[2K[G[34m?[39m [1mHow many days do you want to keep container images before they're deleted?[22m 1[79G[2K[G[32m✔[39m [1mHow many days do you want to keep container images before they're deleted?[22m [36m1[39m[79G
+[?25hi  functions: Configuring cleanup policy for repository in us-central1. Images older than 1 days will be automatically deleted.
+i  functions: Configured cleanup policy for repository in us-central1.
+Error: There was an error deploying functions:
+- Error Failed to create function searchPlayers in region us-central1
+- Error Failed to create function computePropTablesDaily in region us-central1
+- Error Failed to create function buildSearchIndexWeekly in region us-central1
+- Error Failed to create function topPlayers in region us-central1
+- Error Failed to create function computeAggregatesManual in region us-central1
+- Error Failed to create function rebuildSearchIndex in region us-central1
+- Error Failed to create function computeAggregatesDaily in region us-central1
+- Error Failed to create function computePropTablesManual in region us-central1

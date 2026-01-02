@@ -15,7 +15,6 @@
   },
   "dependencies": {
     "@google-cloud/storage": "^7.7.0",
-    "@proppulse/shared": "workspace:*",
     "axios": "^1.6.2",
     "cheerio": "^1.0.0-rc.12",
     "cors": "^2.8.5",
@@ -25,7 +24,8 @@
     "firebase-functions": "^4.5.0",
     "puppeteer": "^21.6.1",
     "stripe": "^14.8.0",
-    "zod": "^3.22.4"
+    "zod": "^3.22.4",
+    "fuse.js": "^7.0.0"
   },
   "devDependencies": {
     "@types/cors": "^2.8.17",
