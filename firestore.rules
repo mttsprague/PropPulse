@@ -1,0 +1,99 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
+    }
+    
+    // Public read-only collections (cached game data)
+    match /teams/{teamId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /players/{playerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /games/{gameId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /playerGameStats/{statId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /playerAggregates/{playerId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /injurySnapshots/{snapshotId} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    match /dailyChanges/{date} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+    
+    // User-specific data
+    match /users/{uid} {
+      allow read: if isOwner(uid);
+      allow create: if isOwner(uid);
+      allow update: if isOwner(uid) && 
+                      !request.resource.data.diff(resource.data).hasAny(['stripeCustomerId', 'plan']);
+      allow delete: if false;
+      
+      match /savedProps/{savedPropId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid);
+        allow update: if isOwner(uid);
+        allow delete: if isOwner(uid);
+      }
+      
+      match /watchlist/{itemId} {
+        allow read: if isOwner(uid);
+        allow create: if isOwner(uid);
+        allow update: if isOwner(uid);
+        allow delete: if isOwner(uid);
+      }
+    }
+    
+    match /usage/{uid}/daily/{date} {
+      allow read: if isOwner(uid);
+      allow write: if false; // Only backend can write
+    }
+    
+    // Ingestion system collections (admin read-only)
+    match /scraperHealth/{scraperId} {
+      allow read: if isAdmin();
+      allow write: if false; // Only Cloud Functions
+    }
+    
+    match /ingestionRuns/{runId} {
+      allow read: if isAdmin();
+      allow write: if false; // Only Cloud Functions
+    }
+    
+    match /systemLogs/{logId} {
+      allow read: if isAdmin();
+      allow write: if false; // Only Cloud Functions
+    }
+  }
+}

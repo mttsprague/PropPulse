@@ -1,0 +1,34 @@
+{
+  "name": "proppulse",
+  "version": "1.0.0",
+  "private": true,
+  "description": "PropPulse - NBA Player Prop Research Workflow Saver",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "test": "turbo run test",
+    "web:dev": "turbo run dev --filter=web",
+    "mobile:dev": "turbo run dev --filter=mobile",
+    "functions:dev": "turbo run dev --filter=functions",
+    "functions:deploy": "turbo run deploy --filter=functions",
+    "ingest:validate": "node scripts/validate-ingestion.js",
+    "ingest:csv": "node scripts/cli-csv-import.js",
+    "seed": "cd scripts && npm install && node seed-data.js",
+    "emulators": "firebase emulators:start"
+  },
+  "devDependencies": {
+    "turbo": "^1.11.0",
+    "typescript": "^5.3.3"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=8.0.0"
+  },
+  "packageManager": "pnpm@8.10.0"
+}

@@ -1,0 +1,23 @@
+teamId,teamName,playerId,playerName,position,jerseyNumber
+LAL,Los Angeles Lakers,jamesle01,LeBron James,F,23
+LAL,Los Angeles Lakers,davisan02,Anthony Davis,F-C,3
+LAL,Los Angeles Lakers,russeda01,D'Angelo Russell,G,0
+GSW,Golden State Warriors,curryst01,Stephen Curry,G,30
+GSW,Golden State Warriors,thompkl01,Klay Thompson,G,11
+GSW,Golden State Warriors,greendr01,Draymond Green,F,23
+PHO,Phoenix Suns,duranke01,Kevin Durant,F,35
+PHO,Phoenix Suns,bookede01,Devin Booker,G,1
+LAC,LA Clippers,leonaka01,Kawhi Leonard,F,2
+LAC,LA Clippers,georgpa01,Paul George,F,13
+DEN,Denver Nuggets,jokicni01,Nikola Jokic,C,15
+DEN,Denver Nuggets,murraja01,Jamal Murray,G,27
+MIL,Milwaukee Bucks,antetgi01,Giannis Antetokounmpo,F,34
+MIL,Milwaukee Bucks,lillada01,Damian Lillard,G,0
+PHI,Philadelphia 76ers,embijo01,Joel Embiid,C,21
+PHI,Philadelphia 76ers,maxeda01,Tyrese Maxey,G,0
+BOS,Boston Celtics,tatumja01,Jayson Tatum,F,0
+BOS,Boston Celtics,brownj02,Jaylen Brown,G-F,7
+DAL,Dallas Mavericks,doncilu01,Luka Doncic,G-F,77
+DAL,Dallas Mavericks,irvinky01,Kyrie Irving,G,11
+MIN,Minnesota Timberwolves,townska01,Karl-Anthony Towns,C,32
+MIN,Minnesota Timberwolves,edwaran01,Anthony Edwards,G,5

@@ -1,0 +1,110 @@
+rules_version = '2';
+
+/**
+ * Firebase Security Rules for Prop Card Export System
+ * 
+ * Protects user data and enforces access control for exports
+ */
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+             get(/databases/$(database)/documents/users/$(request.auth.uid)).data.isAdmin == true;
+    }
+
+    // User documents
+    match /users/{uid} {
+      // Users can read/write their own document
+      allow read, write: if isOwner(uid);
+
+      // User exports subcollection
+      match /exports/{exportId} {
+        // Users can only read their own exports
+        allow read: if isOwner(uid);
+        // Only the server can write (via admin SDK)
+        allow write: if false;
+      }
+    }
+
+    // User plans (quota management)
+    match /userPlans/{uid} {
+      // Users can read their own plan
+      allow read: if isOwner(uid);
+      // Only admins can update plans
+      allow write: if isAdmin();
+    }
+
+    // Daily usage tracking
+    match /usage/{uid} {
+      match /daily/{date} {
+        // Users can read their own usage
+        allow read: if isOwner(uid);
+        // Only the server can write (via admin SDK)
+        allow write: if false;
+      }
+    }
+
+    // Export cache (shared across users)
+    match /exportCache/{hash} {
+      // Anyone authenticated can read cache
+      allow read: if isAuthenticated();
+      // Only the server can write
+      allow write: if false;
+    }
+
+    // Deny all other access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
+
+service firebase.storage {
+  match /b/{bucket}/o {
+    
+    // Helper functions
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isOwner(uid) {
+      return isAuthenticated() && request.auth.uid == uid;
+    }
+
+    // User-specific exports
+    match /exports/{uid}/{date}/{filename} {
+      // Users can read their own exports
+      allow read: if isOwner(uid);
+      // Users can upload their own exports
+      allow write: if isOwner(uid) && 
+                     request.resource.contentType == 'image/png' &&
+                     request.resource.size < 5 * 1024 * 1024; // 5 MB max
+    }
+
+    // Shared cache exports
+    match /exports/cache/{filename} {
+      // Anyone authenticated can read cache
+      allow read: if isAuthenticated();
+      // Only authenticated users can write
+      allow write: if isAuthenticated() &&
+                     request.resource.contentType == 'image/png' &&
+                     request.resource.size < 5 * 1024 * 1024; // 5 MB max
+    }
+
+    // Deny all other access
+    match /{allPaths=**} {
+      allow read, write: if false;
+    }
+  }
+}
