@@ -21,13 +21,6 @@
       "collectionGroup": "savedProps",
       "queryScope": "COLLECTION_GROUP",
       "fields": [
-        { "fieldPath": "createdAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "savedProps",
-      "queryScope": "COLLECTION_GROUP",
-      "fields": [
         { "fieldPath": "tags", "arrayConfig": "CONTAINS" },
         { "fieldPath": "createdAt", "order": "DESCENDING" }
       ]
@@ -41,39 +34,11 @@
       ]
     },
     {
-      "collectionGroup": "dailyChanges",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "date", "order": "DESCENDING" }
-      ]
-    },
-    {
       "collectionGroup": "games",
       "queryScope": "COLLECTION",
       "fields": [
         { "fieldPath": "date", "order": "ASCENDING" },
         { "fieldPath": "status", "order": "ASCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerGameStats",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "gameId", "order": "ASCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "injurySnapshots",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "snapshotDateTime", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "ingestionRuns",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "startedAt", "order": "DESCENDING" }
       ]
     },
     {
@@ -90,69 +55,6 @@
       "fields": [
         { "fieldPath": "searchTokens", "arrayConfig": "CONTAINS" },
         { "fieldPath": "isActive", "order": "ASCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "last10Avg.pts", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "last10Avg.reb", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "last10Avg.ast", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "last10Avg.min", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "last20Avg.pts", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "playerAggregates",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "seasonAvg.pts", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "exportCache",
-      "queryScope": "COLLECTION",
-      "fields": [
-        { "fieldPath": "expiresAt", "order": "ASCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "exports",
-      "queryScope": "COLLECTION_GROUP",
-      "fields": [
-        { "fieldPath": "createdAt", "order": "DESCENDING" }
-      ]
-    },
-    {
-      "collectionGroup": "recentSearches",
-      "queryScope": "COLLECTION_GROUP",
-      "fields": [
-        { "fieldPath": "searchedAt", "order": "DESCENDING" }
       ]
     }
   ],

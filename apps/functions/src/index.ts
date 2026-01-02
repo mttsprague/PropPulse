@@ -190,15 +190,6 @@ export const ingestScheduleWeekly = functions
     }
   });
 
-  try {
-    await ingestTeamsAndPlayers();
-    res.status(200).send({ success: true, message: 'Teams and players ingested' });
-  } catch (error: any) {
-    console.error('Error ingesting teams and players:', error);
-    res.status(500).send({ success: false, error: error.message });
-  }
-});
-
 // Manual trigger for any ingestion job
 export const runIngestion = functions.https.onRequest(async (req, res) => {
   const adminKey = req.headers['x-admin-key'];

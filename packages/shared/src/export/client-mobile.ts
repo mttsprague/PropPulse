@@ -237,7 +237,7 @@ export async function shareExportMobile(
  * Save export to device's photo library
  */
 export async function saveExportToLibrary(signedUrl: string): Promise<void> {
-  const { default: * as MediaLibrary } = await import('expo-media-library');
+  const MediaLibrary = await import('expo-media-library');
 
   // Request permissions
   const { status } = await MediaLibrary.requestPermissionsAsync();
