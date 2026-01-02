@@ -16,6 +16,12 @@ service firebase.storage {
       allow write: if false; // Only Cloud Functions can write
     }
     
+    // Search index - public read, Cloud Functions write
+    match /search/{fileName} {
+      allow read: if true; // Public access for search index
+      allow write: if false; // Only Cloud Functions can write
+    }
+    
     // Scraper cache - admin only
     match /scraper-cache/{allPaths=**} {
       allow read: if true;
